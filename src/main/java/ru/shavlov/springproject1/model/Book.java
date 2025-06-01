@@ -6,15 +6,15 @@ import jakarta.validation.constraints.Size;
 
 public class Book {
 
-    private int bookId;
+    private int id;
 
     @NotEmpty(message = "Название книги не может быть пустым")
     @Size(min = 2, max = 100, message = "Название книги должно быть от 2 до 100 символов")
-    private String bookName;
+    private String title;
 
     @NotEmpty(message = "Имя автора не может быть пустым")
     @Size(min = 2, max = 100, message = "Имя автора должно быть от 2 до 100 символов")
-    private String bookAuthor;
+    private String author;
 
     @Min(value = 1000, message = "Дата выпуска книги должна быть больше 1000 года")
     private int realiseYear;
@@ -23,34 +23,34 @@ public class Book {
 
     }
 
-    public Book(String bookName, String bookAuthor, int realiseYear) {
-        this.bookName = bookName;
-        this.bookAuthor = bookAuthor;
+    public Book(String title, String author, int realiseYear) {
+        this.title = title;
+        this.author = author;
         this.realiseYear = realiseYear;
     }
 
-    public int getBookId() {
-        return bookId;
+    public int getId() {
+        return id;
     }
 
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getBookName() {
-        return bookName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getBookAuthor() {
-        return bookAuthor;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setBookAuthor(String bookAuthor) {
-        this.bookAuthor = bookAuthor;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public int getRealiseYear() {
