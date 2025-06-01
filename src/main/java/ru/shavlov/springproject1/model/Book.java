@@ -23,8 +23,7 @@ public class Book {
 
     }
 
-    public Book(int bookId, String bookName, String bookAuthor, int realiseYear) {
-        this.bookId = bookId;
+    public Book(String bookName, String bookAuthor, int realiseYear) {
         this.bookName = bookName;
         this.bookAuthor = bookAuthor;
         this.realiseYear = realiseYear;
