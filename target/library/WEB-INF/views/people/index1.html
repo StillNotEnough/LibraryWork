@@ -72,16 +72,16 @@
                     <tr th:each="person, iterStat : ${people}">
                         <th scope="row" th:text="${iterStat.count}"></th>
                         <td>
-                            <a th:href="@{/people/{id}(id=${person.getPersonId()})}"
+                            <a th:href="@{/people/{id}(id=${person.getId()})}"
                                th:text="${person.getFullName()}"></a>
                         </td>
                         <td th:text="${person.getYearOfBirth()}"></td>
                         <td>
-                            <a th:href="@{/people/{id}(id=${person.getPersonId()})}"
+                            <a th:href="@{/people/{id}(id=${person.getId()})}"
                                class="btn btn-sm btn-outline-primary">
                                 <i class="bi bi-eye"></i> Просмотр
                             </a>
-                            <a th:href="@{/people/{id}/edit(id=${person.getPersonId()})}"
+                            <a th:href="@{/people/{id}/edit(id=${person.getId()})}"
                                class="btn btn-sm btn-outline-secondary">
                                 <i class="bi bi-pencil"></i> Редактировать
                             </a>

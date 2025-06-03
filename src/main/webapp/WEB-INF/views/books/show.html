@@ -6,22 +6,22 @@
 </head>
 <body>
 
-<p th:text="${book.getBookName() + ', ' + book.getBookAuthor() + ', ' + book.getRealiseYear()}">VALUE</p>
+<p th:text="${book.title + ', ' + book.author + ', ' + book.realiseYear}">VALUE</p>
 
 <div th:if="${owner}">
-    <span>Книга сейчас у: </span> <span th:text="${owner.getFullName()}">Person Name</span>
+    <span>Книга сейчас у: </span> <span th:text="${owner.fullName}">Person Name</span>
 
-    <form th:method="PATCH" th:action="@{/books/{id}/realise(id=${book.getBookId()})}">
+    <form th:method="PATCH" th:action="@{/books/{id}/realise(id=${book.id})}">
         <input type="submit" value="Освободить книгу"/>
     </form>
 </div>
 
 <div th:if="${people}">
     <span>Эта книга свободна. Кому назначить её?</span>
-    <form th:method="PATCH" th:action="@{/books/{id}/assign(id=${book.getBookId()})}">
+    <form th:method="PATCH" th:action="@{/books/{id}/assign(id=${book.id})}">
         <label for="person">Выбирите человека</label>
-        <select th:object="${person}" th:field="*{id}" id="person" >
-            <option th:each="person : ${people}" th:value="${person.getPersonId}" th:text="${person.getFullName()}">
+        <select name="person.id" id="person"> <!--достаточно просто id человека чтобы выбрать человека из списка-->
+            <option th:each="person : ${people}" th:value="${person.id}" th:text="${person.fullName}">
             </option>
         </select>
         <input type="submit" value="Назначить книгу"/>
@@ -30,11 +30,11 @@
 
 <hr/>
 
-<form th:method="GET" th:action="@{/books/{id}(id=${book.getBookId()})}">
+<form th:method="GET" th:action="@{/books/{id}/edit(id=${book.id})}">
     <input type="submit" value="Редактировать"/>
 </form>
 
-<form th:method="DELETE" th:action="@{/books/{id}(id=${book.getBookId()})}">
+<form th:method="DELETE" th:action="@{/books/{id}(id=${book.id})}">
     <input type="submit" value="Удалить"/>
 </form>
 

@@ -28,7 +28,7 @@ public class BookController {
 
     @GetMapping
     public String index(Model model) {
-        model.addAttribute("book", bookDAO.index());
+        model.addAttribute("books", bookDAO.index());
         return "books/index";
     }
 
@@ -68,7 +68,7 @@ public class BookController {
         return "books/edit";
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/update")
     public String update(@ModelAttribute("book") @Valid Book book, BindingResult bindingResult, @PathVariable("id") int id) {
 
         if (bindingResult.hasErrors()) return "books/edit";
@@ -83,18 +83,20 @@ public class BookController {
         return "redirect:/books";
     }
 
-
     // освобождает книгу
-    @PatchMapping("/{id}")
+    @PatchMapping("/{id}/realise")
     public String realise(@PathVariable("id") int id) {
         bookDAO.realise(id);
         return "redirect:/books/" + id;
     }
 
     //назначает книгу человеку
-    @PatchMapping("/{id}")
-    public String assign(@PathVariable("id") int id, @ModelAttribute("person") Person selectedPerson){
-        bookDAO.assign(id, selectedPerson);
+    @PatchMapping("/{id}/assign")
+    public String assign(@PathVariable("id") int id, @RequestParam("person.id") int personId){
+        Person selectedPerson = personDAO.show(personId);
+        if (selectedPerson != null){
+            bookDAO.assign(id, selectedPerson);
+        }
         return "redirect:/books/" + id;
     }
 }
