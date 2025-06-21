@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
@@ -18,7 +18,14 @@
     <hr/>
     <b>Книги:</b>
     <table th:each="book : ${books}">
-        <tr th:text="${book.title + ', ' + book.author + ', ' + book.realiseYear}">Book</tr>
+        <tr>
+            <td>
+                <span th:text="${book.title + ', ' + book.author + ', ' + book.realiseYear}"
+                    th:style="${book.isExpired()} ? 'color: red' : 'color: black'">
+                    book
+                </span>
+            </td>
+        </tr>
     </table>
     <hr/>
 </div>

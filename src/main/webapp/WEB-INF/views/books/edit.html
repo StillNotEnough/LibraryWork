@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Update book</title>
@@ -17,7 +17,8 @@
     <br/>
     <label for="realiseYear">Введите год: </label>
     <input th:text="text" th:field="*{realiseYear}" id="realiseYear">
-    <div style="color: red" th:if="${#fields.hasErrors('realiseYear')}" th:errors="*{realiseYear}">Realise year error</div>
+    <div style="color: red" th:if="${#fields.hasErrors('realiseYear')}" th:errors="*{realiseYear}">Realise year error
+    </div>
     <br/>
     <input type="submit" value="Обновить">
 </form>
