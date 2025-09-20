@@ -1,1 +1,24 @@
 hibernate.properties
+
+# Hibernate config (уже есть, оставляем)
+hibernate.properties
+
+# Compiled class files
+target/
+
+# Log files
+*.log
+
+# IDE (IntelliJ IDEA)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# IDE (Eclipse)
+.settings/
+.project
+.classpath
+
+# Maven
+.mvn/
